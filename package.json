@@ -10,9 +10,10 @@
     "docs": "gulp docs && npm run show-docs",
     "show-coverage": "open ./coverage/lcov-report/index.html",
     "check-coverage": "istanbul check-coverage",
+    "report-coverage": "cat ./coverage/lcov.info | codecov",
     "delete-coverage": "gulp clean-coverage",
-    "test-dev": "istanbul cover _mocha -- -t 10000 --recursive -R spec && npm run show-coverage",
     "test": "istanbul cover _mocha -- -t 10000 --recursive -R spec",
+    "test-dev": "npm run test && npm run show-coverage",
     "start": "gulp",
     "commit": "git-cz",
     "build": "gulp build && npm run test",
@@ -38,9 +39,11 @@
   "devDependencies": {
     "babel-eslint": "7.2.3",
     "chai": "3.5.0",
+    "codecov.io": "0.1.6",
     "commitizen": "2.9.6",
     "cz-conventional-changelog": "2.0.0",
     "eslint": "3.17.1",
+    "ghooks": "2.0.0",
     "gulp": "3.9.1",
     "gulp-beautify": "2.0.1",
     "gulp-eslint": "3.0.1",
@@ -59,5 +62,10 @@
   },
   "czConfig": {
     "path": "node_modules/cz-conventional-changelog"
+  },
+  "config": {
+    "ghooks": {
+      "pre-commit": "npm run test && npm run check-coverage"
+    }
   }
 }
