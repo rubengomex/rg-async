@@ -1,0 +1,44 @@
+{
+  "name": "rg-async",
+  "version": "1.0.0",
+  "description": "Functional utility methods to run async code with promises (async/await keywords)",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rubengomex/rg-async.git"
+  },
+  "keywords": [
+    "Promises",
+    "Functional Programming",
+    "Utility Functions",
+    "ES6",
+    "async/await"
+  ],
+  "author": "Rúben Gomes <gomesruben21@gmail.com> (http://rubengomes10.github.io/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rubengomex/rg-async/issues"
+  },
+  "homepage": "https://github.com/rubengomex/rg-async#readme",
+  "devDependencies": {
+    "babel-eslint": "7.2.3",
+    "chai": "3.5.0",
+    "eslint": "3.17.1",
+    "gulp": "3.9.1",
+    "gulp-beautify": "2.0.1",
+    "gulp-eslint": "3.0.1",
+    "gulp-jsdoc3": "1.0.1",
+    "gulp-nodemon": "2.2.1",
+    "gulp-rm": "1.0.2",
+    "ink-docstrap": "^1.3.0",
+    "istanbul": "1.1.0-alpha.1",
+    "mocha": "3.2.0",
+    "run-sequence": "1.2.2"
+  },
+  "dependencies": {
+    "lodash": "4.17.4"
+  }
+}

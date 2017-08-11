@@ -1,0 +1,39 @@
+{
+    "tags": {
+        "allowUnknownTags": true,
+        "dictionaries": ["jsdoc"]
+    },
+    "plugins": [
+        "plugins/markdown",
+        "plugins/summarize"
+    ],
+    "templates": {
+        "cleverLinks": true,
+        "monospaceLinks": true,
+        "systemName"            : "rg-async",
+        "footer"                : "",
+        "copyright"             :  "@ Rúben Gomes <gomesruben21@gmail.com> (http://rubengomes10.github.io/)",
+        "includeDate"           : true,
+        "navType"               : "vertical",
+        "theme"                 : "flatly",
+        "linenums"              : true,
+        "collapseSymbols"       : true,
+        "inverseNav"            : false,
+        "outputSourceFiles"     : true,
+        "outputSourcePath"      : true,
+        "dateFormat"            : "YYYY-MM-DD",
+        "syntaxTheme"           : "dark",
+        "sort"                  : true,
+        "search"                : true 
+    },
+    "opts": {
+        "destination": "./docs/",
+        "encoding": "utf8",
+        "navType": "vertical",
+        "linenums": true,
+        "private": true,
+        "recurse": true,
+        "template": "./node_modules/ink-docstrap/template",
+        "dateFormat": "MMMM Do YYYY, h:mm:ss a"
+    }
+}

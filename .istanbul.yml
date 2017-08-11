@@ -1,0 +1,13 @@
+instrumentation:
+    excludes:
+        - test*.js
+        - index.js
+        - gulpfile.js
+        - docs/**/*
+    include-all-sources: true
+check:
+    global:
+        statements: 95
+        lines: 95
+        branches: 95
+        functions: 100 
