@@ -1,14 +1,26 @@
 {
   "name": "rg-async",
-  "version": "1.0.0",
+  "version": "0.0.0-semantically-released",
   "description": "Functional utility methods to run async code with promises (async/await keywords)",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "check-eslint": "gulp lint",
+    "watch-eslint": "gulp watch-lint",
+    "show-docs": "open ./docs/index.html",
+    "docs": "gulp docs && npm run show-docs",
+    "show-coverage": "open ./coverage/lcov-report/index.html",
+    "check-coverage": "istanbul check-coverage",
+    "delete-coverage": "gulp clean-coverage",
+    "test-dev": "istanbul cover _mocha -- -t 10000 --recursive -R spec && npm run show-coverage",
+    "test": "istanbul cover _mocha -- -t 10000 --recursive -R spec",
+    "start": "gulp",
+    "commit": "git-cz",
+    "build": "gulp build && npm run test",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rubengomex/rg-async.git"
+    "url": "https://github.com/rubengomex/rg-async.git"
   },
   "keywords": [
     "Promises",
@@ -26,6 +38,8 @@
   "devDependencies": {
     "babel-eslint": "7.2.3",
     "chai": "3.5.0",
+    "commitizen": "2.9.6",
+    "cz-conventional-changelog": "2.0.0",
     "eslint": "3.17.1",
     "gulp": "3.9.1",
     "gulp-beautify": "2.0.1",
@@ -36,9 +50,14 @@
     "ink-docstrap": "^1.3.0",
     "istanbul": "1.1.0-alpha.1",
     "mocha": "3.2.0",
-    "run-sequence": "1.2.2"
+    "run-sequence": "1.2.2",
+    "semantic-release": "^6.3.6"
   },
   "dependencies": {
+    "chai-as-promised": "7.1.1",
     "lodash": "4.17.4"
+  },
+  "czConfig": {
+    "path": "node_modules/cz-conventional-changelog"
   }
 }

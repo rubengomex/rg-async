@@ -12,7 +12,7 @@
         "monospaceLinks": true,
         "systemName"            : "rg-async",
         "footer"                : "",
-        "copyright"             :  "@ Rúben Gomes <gomesruben21@gmail.com> (http://rubengomes10.github.io/)",
+        "copyright"             : "@ Rúben Gomes <gomesruben21@gmail.com> (http://rubengomes10.github.io/)",
         "includeDate"           : true,
         "navType"               : "vertical",
         "theme"                 : "flatly",

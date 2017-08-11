@@ -6,10 +6,10 @@ const jsDoc        = require('gulp-jsdoc3');
 const rm           = require('gulp-rm');
 const runSequence  = require('run-sequence');
 
-const libFiles        = './lib/**/*.js';
+const srcFiles        = './src/**/*.js';
 const testFiles       = './test/**/*.js';
-const lintFiles       = ['./lib/**/*.js', './test/**/*.js', './index.js'];
-const destLibsFolder  = './lib';
+const lintFiles       = ['./src/**/*.js', './test/**/*.js'];
+const destLibsFolder  = './src';
 const destTestsFolder = './test';
 const coverageDir     = './coverage';
 
@@ -24,7 +24,7 @@ const nodemonOpts  = {
  * Beautify all the files in srcFiles
  */
 gulp.task('beautify-lib-files', () => {
-    gulp.src(libFiles)
+    gulp.src(srcFiles)
         .pipe(beautify())
         .pipe(gulp.dest(destLibsFolder));
 });
@@ -61,7 +61,7 @@ gulp.task('watch-lint', () => runSequence(() => gulp.watch(lintFiles, ['lint']))
 gulp.task('docs', cb => {
     let config = require('./jsdoc.json');
 
-    gulp.src(['README.md', libFiles], { read: false})
+    gulp.src(['README.md', srcFiles], { read: false})
         .pipe(jsDoc(config, cb));
 });
 
