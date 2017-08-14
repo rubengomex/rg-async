@@ -1,4 +1,4 @@
-const {map} = require('./Map');
+const {map} = require('./map');
 
 /**
  * @memberOf module:rg-async
