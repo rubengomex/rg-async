@@ -94,7 +94,7 @@ A small library with JS functional utility methods to run async code with promis
 
 * `filter(srcArray, predicate)` method invokes in parallel an async `predicate` function on each item in the given source Array.
 
-* This will return a promise to be resolved containing the new array with the items that predicate function returned a truthy value.
+* This will return a `promise` to be resolved containing the new array with the items that predicate function returned a truthy value.
 
 * The async `predicate` function follows the `standard javascript filter arguments`- `(value, index, array)` and needs to return a `promise`.
 
@@ -131,7 +131,7 @@ A small library with JS functional utility methods to run async code with promis
 
 * `each(srcArray, consumer)` method invokes in parallel an async `consumer` function on each item in the given source Array.
 
-* This will return a `promise without any resolved value.
+* This will return a `promise` without any resolved value.
 
 * The `consumer` function follows the `standard javascript map arguments` - `(value, index, array)`and needs to return a `promise`
 
