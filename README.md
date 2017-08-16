@@ -3,13 +3,14 @@ rg-async
 
 A small library with JS functional utility methods to run async code with promises (async/await keywords)
 
+[![docs](http://inch-ci.org/github/rubengomex/rg-async.svg?branch=master)](http://inch-ci.org/github/rubengomex/rg-async)
 [![travis build](https://img.shields.io/travis/rubengomex/rg-async.svg)](https://travis-ci.org/rubengomex/rg-async)
 [![codecov coverage](https://img.shields.io/codecov/c/github/rubengomex/rg-async.svg)](https://codecov.io/gh/rubengomex/rg-async)
 [![code climate](https://img.shields.io/codeclimate/github/rubengomex/rg-async.svg)](https://codeclimate.com/github/rubengomex/rg-async)
 [![dependencies](https://img.shields.io/david/rubengomex/rg-async.svg)](https://david-dm.org/rubengomex/rg-async)
 [![downloads](https://img.shields.io/npm/dm/rg-async.svg)](https://npm-stat.com/charts.html?package=rg-async&from=2017-08-11)
+[![node version](https://img.shields.io/node/v/rg-async.svg)](https://nodejs.org)
 [![MIT Licence](https://img.shields.io/npm/l/rg-async.svg)](https://opensource.org/licenses/MIT)
-[![docs](https://img.shields.io/badge/docs--blue.svg)](https://rubengomex.github.io/rg-async/)
 
 [![NPM](https://nodei.co/npm/rg-async.png?downloads=true&downloadRank=true&stars=true)](https://npm.im/rg-async)
 
@@ -83,7 +84,7 @@ A small library with JS functional utility methods to run async code with promis
         });
     }
 
-    printRgAsyncPlusArrayNumbers()
+    printRgAsyncPlusArrayNumbers(array)
         .then(() => console.log('All promises resolved')) // output => rg-async 1, rg-async 2, rg-async 3, All promises resolved
         .catch(err => console.log(err));
 ```
