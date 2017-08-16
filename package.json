@@ -1,6 +1,9 @@
 {
   "name": "rg-async",
   "version": "0.0.0-semantically-released",
+  "engines": {
+    "node": ">=7.10.1"
+  },
   "description": "Functional utility methods to run async code with promises (async/await keywords)",
   "main": "src/index.js",
   "scripts": {
