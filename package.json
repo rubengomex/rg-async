@@ -33,6 +33,10 @@
     "ES6",
     "async/await"
   ],
+  "files": [
+    "src",
+    "README.md"
+  ],
   "author": "Rúben Gomes <gomesruben21@gmail.com> (http://rubengomes10.github.io/)",
   "license": "MIT",
   "bugs": {

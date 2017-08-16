@@ -44,29 +44,29 @@ A small library with JS functional utility methods to run async code with promis
 * Without async/await keywords:
 
 ```js
-    const rgAsync = require('rg-async');
+const rgAsync = require('rg-async');
 
-    rgAsync.filter([1,2,3], value => Promise.resolve(value % 2 === 0))
-        .then(filteredArray => console.log(filteredArray)) // output => [2]
-        .catch(err => console.log(err));
+rgAsync.filter([1,2,3], value => Promise.resolve(value % 2 === 0))
+    .then(filteredArray => console.log(filteredArray)) // output => [2]
+    .catch(err => console.log(err));
 
 ```
 
 * With async/await keywords:
 
 ```js
-    const rgAsync = require('rg-async');
+const rgAsync = require('rg-async');
 
-    rgAsync.map([1,2,3], async value => {
-        try {
-            const multiplyValue = await getAsyncMultiplyValue(); // some async code which returns 2 as a promise resolved value.
-        }catch(err){
-            throw err;
-        }
-        return value * multiplyValue;
-    })
-    .then(mappedArray => console.log(mappedArray)) // output => [2,4,6]
-    .catch(err => console.log(err));
+rgAsync.map([1,2,3], async value => {
+    try {
+        const multiplyValue = await getAsyncMultiplyValue(); // some async code which returns 2 as a promise resolved value.
+    }catch(err){
+        throw err;
+    }
+    return value * multiplyValue;
+})
+.then(mappedArray => console.log(mappedArray)) // output => [2,4,6]
+.catch(err => console.log(err));
 
 ```
 
@@ -74,19 +74,19 @@ A small library with JS functional utility methods to run async code with promis
 
 ```js
 
-    const rgAsync = require('rg-async');
-    const array = [1,2,3];
+const rgAsync = require('rg-async');
+const array = [1,2,3];
 
-    async function printRgAsyncPlusArrayNumbers(array){
-        await rgAsync.each([1,2,3], async value => {
-            const name = await getAsyncName(); // some async code which returns 'rg-async' as a promise resolved value.
-            console.log(name + ' ' + value); 
-        });
-    }
+async function printRgAsyncPlusArrayNumbers(array){
+    await rgAsync.each([1,2,3], async value => {
+        const name = await getAsyncName(); // some async code which returns 'rg-async' as a promise resolved value.
+        console.log(name + ' ' + value); 
+    });
+}
 
-    printRgAsyncPlusArrayNumbers(array)
-        .then(() => console.log('All promises resolved')) // output => rg-async 1, rg-async 2, rg-async 3, All promises resolved
-        .catch(err => console.log(err));
+printRgAsyncPlusArrayNumbers(array)
+    .then(() => console.log('All promises resolved')) // output => rg-async 1, rg-async 2, rg-async 3, All promises resolved
+    .catch(err => console.log(err));
 ```
 
 ## API
@@ -102,11 +102,11 @@ A small library with JS functional utility methods to run async code with promis
 * Example
 
 ```js
-    const rgAsync = require('rg-async');
+const rgAsync = require('rg-async');
 
-    rgAsync.filter([1,2,3], value => Promise.resolve(value < 3))
-        .then(filteredArray => console.log(filteredArray)) // output => [1,2]
-        .catch(err => console.log(err));
+rgAsync.filter([1,2,3], value => Promise.resolve(value < 3))
+    .then(filteredArray => console.log(filteredArray)) // output => [1,2]
+    .catch(err => console.log(err));
 ```
 
 
@@ -121,11 +121,11 @@ A small library with JS functional utility methods to run async code with promis
 * Example
 
 ```js
-    const rgAsync = require('rg-async');
+const rgAsync = require('rg-async');
 
-    rgAsync.map([1,2,3], value => Promise.resolve(value * 2))
-        .then(mappedArray => console.log(mappedArray)) // output => [2,4,6]
-        .catch(err => console.log(err));
+rgAsync.map([1,2,3], value => Promise.resolve(value * 2))
+    .then(mappedArray => console.log(mappedArray)) // output => [2,4,6]
+    .catch(err => console.log(err));
 ```
 
 #### Each
@@ -139,9 +139,9 @@ A small library with JS functional utility methods to run async code with promis
 * Example
 
 ```js
-    const rgAsync = require('rg-async');
+const rgAsync = require('rg-async');
 
-    rgAsync.each([1,2,3], value => Promise.resolve(console.log(value))
-        .then(() => console.log('done')) // output => 1,2,3,done
-        .catch(err => console.log(err));
+rgAsync.each([1,2,3], value => Promise.resolve(console.log(value))
+    .then(() => console.log('done')) // output => 1,2,3,done
+    .catch(err => console.log(err));
 ```
