@@ -10,8 +10,12 @@ const {
 const {
     filter
 } = require('./filter');
+const {
+    each
+} = require('./each');
 
 module.exports = {
     map,
-    filter
+    filter,
+    each
 };
