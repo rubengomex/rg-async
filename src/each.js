@@ -1,5 +1,3 @@
-
-
 /**
  * @memberOf module:rg-async
  * @author Rúben Gomes <gomesruben21@gmail.com>

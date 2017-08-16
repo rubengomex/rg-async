@@ -13,9 +13,13 @@ const {
 const {
     each
 } = require('./each');
+const {
+    reduce
+} = require('./reduce');
 
 module.exports = {
     map,
     filter,
-    each
+    each,
+    reduce
 };

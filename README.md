@@ -27,19 +27,11 @@ A small library with JS functional utility methods to run async code with promis
 ### Test
 
 ```bash
-    $ npm run test
-```
-
-```bash
-    $ npm test
-```
-
-```bash
     $ npm t
 ```
 
 
-## Usage
+## Basic usage
 
 * Without async/await keywords:
 
@@ -91,6 +83,11 @@ printRgAsyncPlusArrayNumbers(array)
 
 ## API
 
+* [Filter](#filter)
+* [Map](#map)
+* [Each](#each)
+* [Reduce](#reduce)
+
 #### Filter
 
 * `filter(srcArray, predicate)` method invokes in parallel an async `predicate` function on each item in the given source Array.
@@ -116,7 +113,7 @@ rgAsync.filter([1,2,3], value => Promise.resolve(value < 3))
 
 * This will return a `promise` to be resolved containing the new array with the mapped/transformed items.
 
-* The `mapper` function follows the `standard javascript map arguments` - `(value, index, array)`and needs to return a `promise`
+* The `mapper` function follows the `standard javascript map arguments` - `(value, index, array)`and needs to return a `promise`.
 
 * Example
 
@@ -134,14 +131,34 @@ rgAsync.map([1,2,3], value => Promise.resolve(value * 2))
 
 * This will return a `promise` without any resolved value.
 
-* The `consumer` function follows the `standard javascript map arguments` - `(value, index, array)`and needs to return a `promise`
+* The `consumer` function follows the `standard javascript forEach arguments` - `(value, index, array)`and needs to return a `promise`.
 
 * Example
 
 ```js
 const rgAsync = require('rg-async');
 
-rgAsync.each([1,2,3], value => Promise.resolve(console.log(value))
+rgAsync.each([1,2,3], value => Promise.resolve(console.log(value)))
     .then(() => console.log('done')) // output => 1,2,3,done
     .catch(err => console.log(err));
 ```
+
+#### Reduce
+
+* `reduce(srcArray, reducer, accumulator)` method invokes in series an async `reducer` function on each item in the given source Array.
+* The `reducer` function transforms an `accumulator` value based on each item iterated over. The `reducer` function follows the `standard javascript map arguments`- `(accumulator, currValue, index, array)` and needs to return a `promise.`
+* This will return a `promise` with to be resolved containing the accumulator final value.
+
+* Example
+
+```js
+const rgAsync = require('rg-async');
+
+rgAsync.reduce([1,2,3], (accumulator, currVal) => Promise.resolve(accumulator + currVal), 0)
+.then(accumulator => console.log(accumulator)) // output => 6
+.catch(err => console.log(err));
+```
+
+
+
+
