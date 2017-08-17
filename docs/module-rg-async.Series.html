@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>rg-async Class: Filter</title>
+	<title>rg-async Class: Series</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,7 +72,7 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Class: Filter</h1>
+	<h1 class="page-title">Class: Series</h1>
 <section>
 
 <header>
@@ -80,10 +80,10 @@
         <h2>
             <span class="ancestors"><a href="module-rg-async.html">rg-async</a>.</span>
         
-        Filter
+        Series
         </h2>
         
-            <div class="class-description"><p>Defines a Filter class. Provides two methods (filter that will run in parallel and filterSeries that will run in series).</p></div>
+            <div class="class-description"><p>Defines a Series class. Provides a series method that will run in series).</p></div>
         
     
 </header>
@@ -95,7 +95,7 @@
         
 <hr>
 <dt>
-    <h4 class="name" id="Filter"><span class="type-signature"></span>new Filter()</h4>
+    <h4 class="name" id="Series"><span class="type-signature"></span>new Series()</h4>
     
     
 </dt>
@@ -152,8 +152,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="filter.js.html">filter.js</a>,
-				 <a href="filter.js.html#sunlight-1-line-10">line 10</a>
+				<a href="series.js.html">series.js</a>,
+				 <a href="series.js.html#sunlight-1-line-9">line 9</a>
 			</li>
 		</ul>
 	</dd>
@@ -204,18 +204,17 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".filter"><span class="type-signature">&lt;static> </span>filter(srcArray, predicate)</h4>
+    <h4 class="name" id=".serie"><span class="type-signature">&lt;static> </span>serie(srcArray)</h4>
     
     
-    <p class="summary">Invokes in parallel an async predicate function on each item in the given source Array.</p>
+    <p class="summary">Invokes in series each item in the given source Array.</p>
     
 </dt>
 <dd>
 
     
     <div class="description">
-        <p>Invokes in parallel an async predicate function on each item in the given source Array.
-This will return a promise to be resolved containing the new array with the items that predicate function returned a truthy value.</p>
+        <p>Invokes in series each item in the given source Array.</p>
     </div>
     
 
@@ -267,31 +266,7 @@ This will return a promise to be resolved containing the new array with the item
 
             
 
-            <td class="description last"><p>Specifies the source array to filter over.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>predicate</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Specifies the async function that will be called with (value, index, array) as arguments and returns true to keep the value in the resulting filtered array.</p></td>
+            <td class="description last"><p>Specifies the source array with promises to run in series.</p></td>
         </tr>
 
     
@@ -335,8 +310,8 @@ This will return a promise to be resolved containing the new array with the item
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="filter.js.html">filter.js</a>,
-				 <a href="filter.js.html#sunlight-1-line-12">line 12</a>
+				<a href="series.js.html">series.js</a>,
+				 <a href="series.js.html#sunlight-1-line-11">line 11</a>
 			</li>
 		</ul>
 	</dd>
@@ -365,7 +340,7 @@ This will return a promise to be resolved containing the new array with the item
     
             
 <div class="param-desc">
-    <p>Returns a promise to be resolved containing the new array with the filtered items.</p>
+    <p>Returns a promise to be resolved containing the same structure as thr srcArray but with the resolved values.</p>
 </div>
 
 

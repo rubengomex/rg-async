@@ -11,13 +11,13 @@ describe('reduce tests', () => {
 
     it('it should gets an object with properties name based on array values and the values based on the index', () => {
         expect(rgAsync.reduce(['one', 'two', 'three'], (accumulator, value, index) => {
-            accumulator[value] = index + 1;
-            return Promise.resolve(accumulator);
-        }, {}))
-        .to.eventually.be.deep.equal({
-            'one': 1,
-            'two': 2,
-            'three': 3
-        });
+                accumulator[value] = index + 1;
+                return Promise.resolve(accumulator);
+            }, {}))
+            .to.eventually.be.deep.equal({
+                'one': 1,
+                'two': 2,
+                'three': 3
+            });
     });
 });

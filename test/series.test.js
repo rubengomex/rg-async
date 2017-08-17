@@ -17,16 +17,16 @@ describe('series tests', () => {
             () => Promise.resolve(3)
         ];
 
-        expect(rgAsync.series(srcArray)).to.eventually.be.deep.equal([1,2,3]);
+        expect(rgAsync.series(srcArray)).to.eventually.be.deep.equal([1, 2, 3]);
     });
 
     it('it should get an array with one,two,three values populated in series with async await keywords', () => {
         const srcArray = [
-            async () => await Promise.resolve('one'),
-            async () => await Promise.resolve('two'),
-            async () => await Promise.resolve('three')
+            async() => await Promise.resolve('one'),
+            async() => await Promise.resolve('two'),
+            async() => await Promise.resolve('three')
         ];
 
-        expect(rgAsync.series(srcArray)).to.eventually.be.deep.equal(['one','two','three']);
+        expect(rgAsync.series(srcArray)).to.eventually.be.deep.equal(['one', 'two', 'three']);
     });
 });

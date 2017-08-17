@@ -1,4 +1,6 @@
-const {reduce} = require('./reduce');
+const {
+    reduce
+} = require('./reduce');
 /**
  * @memberOf module:rg-async
  * @author Rúben Gomes <gomesruben21@gmail.com>
@@ -15,7 +17,7 @@ class Series {
      * @return {Promise}            Returns a promise to be resolved containing the same structure as thr srcArray but with the resolved values.
      */
     static series(srcArray) {
-        return reduce(srcArray, async (accumulator, curr) => {
+        return reduce(srcArray, async(accumulator, curr) => {
             accumulator.push(await curr());
             return accumulator;
         }, []);

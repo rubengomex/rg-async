@@ -40,7 +40,7 @@
 			<li class="dropdown">
 				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="module-rg-async.Each.html">rg-async.Each</a></li><li><a href="module-rg-async.Filter.html">rg-async.Filter</a></li><li><a href="module-rg-async.Map.html">rg-async.Map</a></li><li><a href="module-rg-async.Reduce.html">rg-async.Reduce</a></li>
+					<li><a href="module-rg-async.Each.html">rg-async.Each</a></li><li><a href="module-rg-async.Filter.html">rg-async.Filter</a></li><li><a href="module-rg-async.Map.html">rg-async.Map</a></li><li><a href="module-rg-async.Reduce.html">rg-async.Reduce</a></li><li><a href="module-rg-async.Series.html">rg-async.Series</a></li>
 				</ul>
 			</li>
 			
@@ -94,7 +94,7 @@
 
     <section class="readme-section">
         <article><h1>rg-async</h1><p>A small library with JS functional utility methods to run async code with promises (async/await keywords)</p>
-<p><a href="http://inch-ci.org/github/rubengomex/rg-async"><img src="http://inch-ci.org/github/rubengomex/rg-async.svg?branch=master" alt="docs"></a>
+<p><a href="https://rubengomex.github.io/rg-async/"><img src="http://inch-ci.org/github/rubengomex/rg-async.svg?branch=master" alt="docs"></a>
 <a href="https://travis-ci.org/rubengomex/rg-async"><img src="https://img.shields.io/travis/rubengomex/rg-async.svg" alt="travis build"></a>
 <a href="https://codecov.io/gh/rubengomex/rg-async"><img src="https://img.shields.io/codecov/c/github/rubengomex/rg-async.svg" alt="codecov coverage"></a>
 <a href="https://codeclimate.com/github/rubengomex/rg-async"><img src="https://img.shields.io/codeclimate/github/rubengomex/rg-async.svg" alt="code climate"></a>
@@ -145,6 +145,7 @@ printRgAsyncPlusArrayNumbers(array)
 <li><a href="#map">Map</a></li>
 <li><a href="#each">Each</a></li>
 <li><a href="#reduce">Reduce</a></li>
+<li><a href="#series">Series</a></li>
 </ul>
 <h4>Filter</h4><ul>
 <li><p><code>filter(srcArray, predicate)</code> method invokes in parallel an async <code>predicate</code> function on each item in the given source Array.</p>
@@ -153,54 +154,143 @@ printRgAsyncPlusArrayNumbers(array)
 </li>
 <li><p>The async <code>predicate</code> function follows the <code>standard javascript filter arguments</code>- <code>(value, index, array)</code> and needs to return a <code>promise</code>.</p>
 </li>
-<li><p>Example</p>
-</li>
-</ul>
+<li><p>Examples</p>
+<ul>
+<li><p>With <code>.then</code> - <code>.catch</code> functions</p>
 <pre class="prettyprint source lang-js"><code>const rgAsync = require('rg-async');
 
 rgAsync.filter([1,2,3], value => Promise.resolve(value &lt; 3))
-    .then(filteredArray => console.log(filteredArray)) // output => [1,2]
-    .catch(err => console.log(err));</code></pre><h4>Map</h4><ul>
+  .then(filteredArray => console.log(filteredArray)) // output => [1,2]
+  .catch(err => console.log(err)); // if exists any case that you throw an error on your predicate function</code></pre></li>
+<li><p>With <code>async/await</code> keywords</p>
+<pre class="prettyprint source lang-js"><code>const rgAsync = require('rg-async');
+
+// if you are inside of a async function scope
+// if exist any case that you throw an error you should wrap this with try-catch clause
+try{
+  const result = await rgAsync.filter([1,2,3], value => Promise.resolve(value &lt; 3));
+  console.log(result); // output => [1,2]
+}catch(err){
+  console.log(err);
+}</code></pre></li>
+</ul>
+</li>
+</ul>
+<h4>Map</h4><ul>
 <li><p><code>map(srcArray, mapper)</code> method invokes in parallel an async <code>mapper</code>con function on each item in the given source Array.</p>
 </li>
 <li><p>This will return a <code>promise</code> to be resolved containing the new array with the mapped/transformed items.</p>
 </li>
 <li><p>The <code>mapper</code> function follows the <code>standard javascript map arguments</code> - <code>(value, index, array)</code>and needs to return a <code>promise</code>.</p>
 </li>
-<li><p>Example</p>
-</li>
-</ul>
+<li><p>Examples</p>
+<ul>
+<li><p>With <code>.then</code> - <code>.catch</code> functions</p>
 <pre class="prettyprint source lang-js"><code>const rgAsync = require('rg-async');
 
 rgAsync.map([1,2,3], value => Promise.resolve(value * 2))
-    .then(mappedArray => console.log(mappedArray)) // output => [2,4,6]
-    .catch(err => console.log(err));</code></pre><h4>Each</h4><ul>
+  .then(mappedArray => console.log(mappedArray)) // output => [2,4,6]
+  .catch(err => console.log(err)); // if exists any case that you throw an error on your mapper function</code></pre></li>
+<li><p>With <code>async/await</code> keywords</p>
+<pre class="prettyprint source lang-js"><code>const rgAsync = require('rg-async');
+
+// if you are inside of a async function scope
+// if exist any case that you throw an error you should wrap this with try-catch clause
+try{
+  const result = await rgAsync.map([1,2,3], value => Promise.resolve(value * 2));
+  console.log(result); // output => [2,4,6]
+}catch(err){
+  console.log(err);
+}</code></pre></li>
+</ul>
+</li>
+</ul>
+<h4>Each</h4><ul>
 <li><p><code>each(srcArray, consumer)</code> method invokes in parallel an async <code>consumer</code> function on each item in the given source Array.</p>
 </li>
 <li><p>This will return a <code>promise</code> without any resolved value.</p>
 </li>
 <li><p>The <code>consumer</code> function follows the <code>standard javascript forEach arguments</code> - <code>(value, index, array)</code>and needs to return a <code>promise</code>.</p>
 </li>
-<li><p>Example</p>
-</li>
-</ul>
+<li><p>Examples</p>
+<ul>
+<li><p>With <code>.then</code> - <code>.catch</code> functions</p>
 <pre class="prettyprint source lang-js"><code>const rgAsync = require('rg-async');
 
 rgAsync.each([1,2,3], value => Promise.resolve(console.log(value)))
-    .then(() => console.log('done')) // output => 1,2,3,done
-    .catch(err => console.log(err));</code></pre><h4>Reduce</h4><ul>
-<li><code>reduce(srcArray, reducer, accumulator)</code> method invokes in series an async <code>reducer</code> function on each item in the given source Array.</li>
-<li>The <code>reducer</code> function transforms an <code>accumulator</code> value based on each item iterated over. The <code>reducer</code> function follows the <code>standard javascript map arguments</code>- <code>(accumulator, currValue, index, array)</code> and needs to return a <code>promise.</code></li>
-<li><p>This will return a <code>promise</code> with to be resolved containing the accumulator final value.</p>
-</li>
-<li><p>Example</p>
+  .then(() => console.log('done')) // output => 1,2,3,done
+  .catch(err => console.log(err)); // if exists a case that you throw an error on your consumer function</code></pre></li>
+<li><p>With <code>async/await</code> keywords</p>
+<pre class="prettyprint source lang-js"><code>const rgAsync = require('rg-async');
+
+// if you are inside of a async function scope
+// if exist any case that you throw an error you should wrap this with try-catch clause
+try{
+  await rgAsync.each([1,2,3], value => Promise.resolve(console.log(value)));
+  console.log('done'); // output => 1,2,3,done
+}catch(err){
+  console.log(err);
+}</code></pre></li>
+</ul>
 </li>
 </ul>
+<h4>Reduce</h4><ul>
+<li><p><code>reduce(srcArray, reducer, accumulator)</code> method invokes in series an async <code>reducer</code> function on each item in the given source Array.</p>
+</li>
+<li><p>The <code>reducer</code> function transforms an <code>accumulator</code> value based on each item iterated over. The <code>reducer</code> function follows the <code>standard javascript map arguments</code>- <code>(accumulator, currValue, index, array)</code> and needs to return a <code>promise.</code></p>
+</li>
+<li><p>This will return a <code>promise</code> to be resolved containing the accumulator final value.</p>
+</li>
+<li><p>Examples</p>
+<ul>
+<li><p>With <code>.then</code> - <code>.catch</code> functions</p>
 <pre class="prettyprint source lang-js"><code>const rgAsync = require('rg-async');
 
 rgAsync.reduce([1,2,3], (accumulator, currVal) => Promise.resolve(accumulator + currVal), 0)
 .then(accumulator => console.log(accumulator)) // output => 6
-.catch(err => console.log(err));</code></pre></article>
+.catch(err => console.log(err)); // if exists any case that you throw an error on your reducer function</code></pre></li>
+<li><p>With <code>async/await</code> keywords</p>
+<pre class="prettyprint source lang-js"><code>const rgAsync = require('rg-async');
+
+// if you are inside of a async function scope
+// if exist any case that you throw an error you should wrap this with try-catch clause
+try{
+  const result = await  rgAsync.reduce([1,2,3], (accumulator, currVal) => Promise.resolve(accumulator + currVal), 0);
+  console.log(result); // output => 6
+}catch(err){
+  console.log(err);
+}</code></pre></li>
+</ul>
+</li>
+</ul>
+<h4>Series</h4><ul>
+<li><p><code>series(srcArray)</code> method invokes in series each item in the given source Array.</p>
+</li>
+<li><p>This will return a <code>promise</code> to be resolved containing the same structure as the <code>srcArray</code>, but with the resolved values</p>
+</li>
+<li><p>Example</p>
+</li>
+</ul>
+<pre class="prettyprint source lang-js"><code>const rgAsync = require('rg-async');
+const list = [
+    async () => await someAsyncCode1(), // let assume that this will return a promise with resolved value of 1 
+    async () => await someAsyncCode2(), // returns 2 as a resolved value
+    async () => await someAsyncCode3(), // returns 3 as a resolved value
+    () => Promise.resolve(4) // returns 4 as a resolved value
+];
+// if you are inside of a async function scope
+// if exist a case that you throw an error you should wrap this with try-catch clause
+try{
+    const result = await rgAsync.series(list);
+    console.log(result); // output => [1,2,3,4]
+}catch(err){
+    console.log(err);
+}
+
+// if you aren't inside of async function scope you should use .then method
+rgAsync.series(list)
+    .then(resultArray => console.log(resultArray)); // output => [1,2,3,4]
+    .catch(err => console.log(err)); // if exists a case that you throw an error on your list of promises</code></pre></article>
     </section>
 
 
@@ -250,7 +340,7 @@ rgAsync.reduce([1,2,3], (accumulator, currVal) => Promise.resolve(accumulator + 
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.4</a>
 	
-		on 2017-08-16
+		on 2017-08-17
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

@@ -16,7 +16,9 @@ const {
 const {
     reduce
 } = require('./reduce');
-const {series} = require('./series');
+const {
+    series
+} = require('./series');
 
 module.exports = {
     map,

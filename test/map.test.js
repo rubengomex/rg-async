@@ -15,14 +15,14 @@ describe('map tests', () => {
 
     it('it should a return mapped array with each item as an object with name', () => {
         expect(rgAsync.map(['rg', 'async', 'promise'], value => Promise.resolve({
-            name: value
-        })))
-        .to.eventually.be.deep.equal([{
-            name: 'rg'
-        }, {
-            name: 'async'
-        }, {
-            name: 'promise'
-        }]);
+                name: value
+            })))
+            .to.eventually.be.deep.equal([{
+                name: 'rg'
+            }, {
+                name: 'async'
+            }, {
+                name: 'promise'
+            }]);
     });
 });
