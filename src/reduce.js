@@ -20,7 +20,7 @@ class Reduce {
         return Promise.resolve(accumulator)
             .then(curr => (
                 srcArray.reduce((promise, currValue, index) => (
-                    promise.then(async() => (curr = await reducer(curr, currValue, index)))), Promise.resolve())
+                    promise.then(async () => (curr = await reducer(curr, currValue, index)))), Promise.resolve())
                 .then(() => curr)
             ));
     }

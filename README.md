@@ -87,6 +87,7 @@ printRgAsyncPlusArrayNumbers(array)
 * [Map](#map)
 * [Each](#each)
 * [Reduce](#reduce)
+* [Series](#series)
 
 #### Filter
 
@@ -96,16 +97,32 @@ printRgAsyncPlusArrayNumbers(array)
 
 * The async `predicate` function follows the `standard javascript filter arguments`- `(value, index, array)` and needs to return a `promise`.
 
-* Example
+* Examples
 
-```js
-const rgAsync = require('rg-async');
+    * With `.then` - `.catch` functions
+    
+    ```js
+    const rgAsync = require('rg-async');
 
-rgAsync.filter([1,2,3], value => Promise.resolve(value < 3))
-    .then(filteredArray => console.log(filteredArray)) // output => [1,2]
-    .catch(err => console.log(err));
-```
+    rgAsync.filter([1,2,3], value => Promise.resolve(value < 3))
+        .then(filteredArray => console.log(filteredArray)) // output => [1,2]
+        .catch(err => console.log(err)); // if exists any case that you throw an error on your predicate function
+    ```
 
+    * With `async/await` keywords
+    
+    ```js
+    const rgAsync = require('rg-async');
+
+    // if you are inside of a async function scope
+    // if exist any case that you throw an error you should wrap this with try-catch clause
+    try{
+        const result = await rgAsync.filter([1,2,3], value => Promise.resolve(value < 3));
+        console.log(result); // output => [1,2]
+    }catch(err){
+        console.log(err);
+    }
+    ```
 
 #### Map
 
@@ -115,15 +132,32 @@ rgAsync.filter([1,2,3], value => Promise.resolve(value < 3))
 
 * The `mapper` function follows the `standard javascript map arguments` - `(value, index, array)`and needs to return a `promise`.
 
-* Example
+* Examples
 
-```js
-const rgAsync = require('rg-async');
+    * With `.then` - `.catch` functions
+    
+    ```js
+    const rgAsync = require('rg-async');
 
-rgAsync.map([1,2,3], value => Promise.resolve(value * 2))
-    .then(mappedArray => console.log(mappedArray)) // output => [2,4,6]
-    .catch(err => console.log(err));
-```
+    rgAsync.map([1,2,3], value => Promise.resolve(value * 2))
+        .then(mappedArray => console.log(mappedArray)) // output => [2,4,6]
+        .catch(err => console.log(err)); // if exists any case that you throw an error on your mapper function
+    ```
+
+    * With `async/await` keywords
+    
+    ```js
+    const rgAsync = require('rg-async');
+
+    // if you are inside of a async function scope
+    // if exist any case that you throw an error you should wrap this with try-catch clause
+    try{
+        const result = await rgAsync.map([1,2,3], value => Promise.resolve(value * 2));
+        console.log(result); // output => [2,4,6]
+    }catch(err){
+        console.log(err);
+    }
+    ```
 
 #### Each
 
@@ -133,30 +167,97 @@ rgAsync.map([1,2,3], value => Promise.resolve(value * 2))
 
 * The `consumer` function follows the `standard javascript forEach arguments` - `(value, index, array)`and needs to return a `promise`.
 
-* Example
+* Examples
 
-```js
-const rgAsync = require('rg-async');
+    * With `.then` - `.catch` functions
 
-rgAsync.each([1,2,3], value => Promise.resolve(console.log(value)))
-    .then(() => console.log('done')) // output => 1,2,3,done
-    .catch(err => console.log(err));
-```
+    ```js
+    const rgAsync = require('rg-async');
+
+    rgAsync.each([1,2,3], value => Promise.resolve(console.log(value)))
+        .then(() => console.log('done')) // output => 1,2,3,done
+        .catch(err => console.log(err)); // if exists a case that you throw an error on your consumer function
+    ```
+
+    * With `async/await` keywords
+
+    ```js
+    const rgAsync = require('rg-async');
+
+    // if you are inside of a async function scope
+    // if exist any case that you throw an error you should wrap this with try-catch clause
+    try{
+        await rgAsync.each([1,2,3], value => Promise.resolve(console.log(value)));
+        console.log('done'); // output => 1,2,3,done
+    }catch(err){
+        console.log(err);
+    }
+    ```
 
 #### Reduce
 
 * `reduce(srcArray, reducer, accumulator)` method invokes in series an async `reducer` function on each item in the given source Array.
+
 * The `reducer` function transforms an `accumulator` value based on each item iterated over. The `reducer` function follows the `standard javascript map arguments`- `(accumulator, currValue, index, array)` and needs to return a `promise.`
-* This will return a `promise` with to be resolved containing the accumulator final value.
+
+* This will return a `promise` to be resolved containing the accumulator final value.
+
+* Examples
+
+    * With `.then` - `.catch` functions
+    
+    ```js
+    const rgAsync = require('rg-async');
+
+    rgAsync.reduce([1,2,3], (accumulator, currVal) => Promise.resolve(accumulator + currVal), 0)
+    .then(accumulator => console.log(accumulator)) // output => 6
+    .catch(err => console.log(err)); // if exists any case that you throw an error on your reducer function
+    ```
+
+    * With `async/await` keywords
+    
+    ```js
+    const rgAsync = require('rg-async');
+
+    // if you are inside of a async function scope
+    // if exist any case that you throw an error you should wrap this with try-catch clause
+    try{
+        const result = await  rgAsync.reduce([1,2,3], (accumulator, currVal) => Promise.resolve(accumulator + currVal), 0);
+        console.log(result); // output => 6
+    }catch(err){
+        console.log(err);
+    }
+    ```
+
+#### Series
+
+* `series(srcArray)` method invokes in series each item in the given source Array.
+
+* This will return a `promise` to be resolved containing the same structure as the `srcArray`, but with the resolved values
 
 * Example
 
 ```js
 const rgAsync = require('rg-async');
+const list = [
+    async () => await someAsyncCode1(), // let assume that this will return a promise with resolved value of 1 
+    async () => await someAsyncCode2(), // returns 2 as a resolved value
+    async () => await someAsyncCode3(), // returns 3 as a resolved value
+    () => Promise.resolve(4) // returns 4 as a resolved value
+];
+// if you are inside of a async function scope
+// if exist a case that you throw an error you should wrap this with try-catch clause
+try{
+    const result = await rgAsync.series(list);
+    console.log(result); // output => [1,2,3,4]
+}catch(err){
+    console.log(err);
+}
 
-rgAsync.reduce([1,2,3], (accumulator, currVal) => Promise.resolve(accumulator + currVal), 0)
-.then(accumulator => console.log(accumulator)) // output => 6
-.catch(err => console.log(err));
+// if you aren't inside of async function scope you should use .then method
+rgAsync.series(list)
+    .then(resultArray => console.log(resultArray)); // output => [1,2,3,4]
+    .catch(err => console.log(err)); // if exists a case that you throw an error on your list of promises
 ```
 
 

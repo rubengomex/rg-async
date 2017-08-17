@@ -4,7 +4,7 @@ const rgAsync = require('../src');
 
 chai.use(require('chai-as-promised'));
 
-describe('map tests', () => {
+describe('filter tests', () => {
     it('it should get and empty array', () => {
         expect(rgAsync.filter([], () => Promise.resolve())).to.eventually.be.an('array').empty;
     });

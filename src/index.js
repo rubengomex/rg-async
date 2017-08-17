@@ -16,10 +16,12 @@ const {
 const {
     reduce
 } = require('./reduce');
+const {series} = require('./series');
 
 module.exports = {
     map,
     filter,
     each,
-    reduce
+    reduce,
+    series
 };
