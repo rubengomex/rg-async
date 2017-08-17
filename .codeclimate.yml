@@ -5,7 +5,7 @@ engines:
       complexity:
         enabled: false
   duplication:
-    enable: true
+    enabled: true
     config:
       languages:
         - javascript
