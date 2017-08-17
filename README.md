@@ -3,7 +3,7 @@ rg-async
 
 A small library with JS functional utility methods to run async code with promises (async/await keywords)
 
-[![docs](http://inch-ci.org/github/rubengomex/rg-async.svg?branch=master)](http://inch-ci.org/github/rubengomex/rg-async)
+[![docs](http://inch-ci.org/github/rubengomex/rg-async.svg?branch=master)](https://rubengomex.github.io/rg-async/)
 [![travis build](https://img.shields.io/travis/rubengomex/rg-async.svg)](https://travis-ci.org/rubengomex/rg-async)
 [![codecov coverage](https://img.shields.io/codecov/c/github/rubengomex/rg-async.svg)](https://codecov.io/gh/rubengomex/rg-async)
 [![code climate](https://img.shields.io/codeclimate/github/rubengomex/rg-async.svg)](https://codeclimate.com/github/rubengomex/rg-async)
