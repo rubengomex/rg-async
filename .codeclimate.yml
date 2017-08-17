@@ -1,4 +1,8 @@
+ratings:
+  paths:
+    - "src/**/*"
 exclude_paths:
-  - "docs/"
-  - "test/"
+  - docs/**/*
+  - test/**/*
   - gulpfile.js
+  - .eslintrc.js
