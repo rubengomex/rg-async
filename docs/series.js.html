@@ -40,7 +40,7 @@
 			<li class="dropdown">
 				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="module-rg-async.Each.html">rg-async.Each</a></li><li><a href="module-rg-async.Filter.html">rg-async.Filter</a></li><li><a href="module-rg-async.Map.html">rg-async.Map</a></li><li><a href="module-rg-async.Reduce.html">rg-async.Reduce</a></li><li><a href="module-rg-async.Series.html">rg-async.Series</a></li>
+					<li><a href="module-rg-async.Each.html">rg-async.Each</a></li><li><a href="module-rg-async.Filter.html">rg-async.Filter</a></li><li><a href="module-rg-async.Map.html">rg-async.Map</a></li><li><a href="module-rg-async.Parallel.html">rg-async.Parallel</a></li><li><a href="module-rg-async.Reduce.html">rg-async.Reduce</a></li><li><a href="module-rg-async.Series.html">rg-async.Series</a></li>
 				</ul>
 			</li>
 			
@@ -93,7 +93,7 @@ class Series {
      * @static
      *
      * @param  {Array} srcArray     Specifies the source array with promises to run in series.
-     * @return {Promise}            Returns a promise to be resolved containing the same structure as thr srcArray but with the resolved values.
+     * @return {Promise}            Returns a promise to be resolved containing the same structure as the srcArray but with the resolved values.
      */
     static series(srcArray) {
         return reduce(srcArray, async(accumulator, curr) => {

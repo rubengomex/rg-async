@@ -19,11 +19,15 @@ const {
 const {
     series
 } = require('./series');
+const {
+    parallel
+} = require('./parallel');
 
 module.exports = {
     map,
     filter,
     each,
     reduce,
-    series
+    series,
+    parallel
 };

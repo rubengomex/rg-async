@@ -14,7 +14,7 @@ class Series {
      * @static
      *
      * @param  {Array} srcArray     Specifies the source array with promises to run in series.
-     * @return {Promise}            Returns a promise to be resolved containing the same structure as thr srcArray but with the resolved values.
+     * @return {Promise}            Returns a promise to be resolved containing the same structure as the srcArray but with the resolved values.
      */
     static series(srcArray) {
         return reduce(srcArray, async(accumulator, curr) => {

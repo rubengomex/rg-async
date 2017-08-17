@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>rg-async Class: Map</title>
+	<title>rg-async Class: Parallel</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,7 +72,7 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Class: Map</h1>
+	<h1 class="page-title">Class: Parallel</h1>
 <section>
 
 <header>
@@ -80,10 +80,10 @@
         <h2>
             <span class="ancestors"><a href="module-rg-async.html">rg-async</a>.</span>
         
-        Map
+        Parallel
         </h2>
         
-            <div class="class-description"><p>Defines a Map class. Provides two methods (map that will run in parallel and mapSeries that will run in series).</p></div>
+            <div class="class-description"><p>Defines a Parallel class. Provides a parallel method that will run in parallel).</p></div>
         
     
 </header>
@@ -95,7 +95,7 @@
         
 <hr>
 <dt>
-    <h4 class="name" id="Map"><span class="type-signature"></span>new Map()</h4>
+    <h4 class="name" id="Parallel"><span class="type-signature"></span>new Parallel()</h4>
     
     
 </dt>
@@ -152,8 +152,8 @@
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="map.js.html">map.js</a>,
-				 <a href="map.js.html#sunlight-1-line-6">line 6</a>
+				<a href="parallel.js.html">parallel.js</a>,
+				 <a href="parallel.js.html#sunlight-1-line-6">line 6</a>
 			</li>
 		</ul>
 	</dd>
@@ -204,18 +204,17 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".map"><span class="type-signature">&lt;static> </span>map(srcArray, mapper)</h4>
+    <h4 class="name" id=".parallel"><span class="type-signature">&lt;static> </span>parallel(srcArray)</h4>
     
     
-    <p class="summary">Invokes in parallel an async mapper function on each item in the given source Array.</p>
+    <p class="summary">Invokes in parallel each item in the given source Array.</p>
     
 </dt>
 <dd>
 
     
     <div class="description">
-        <p>Invokes in parallel an async mapper function on each item in the given source Array.
-This will return a promise to be resolved containing the new array with the mapped/transformed items.</p>
+        <p>Invokes in parallel each item in the given source Array.</p>
     </div>
     
 
@@ -267,31 +266,7 @@ This will return a promise to be resolved containing the new array with the mapp
 
             
 
-            <td class="description last"><p>Specifies the source array to map over.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>mapper</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Specifies the async function that will be called with (value, index, array) as arguments and returns the new mapped value.</p></td>
+            <td class="description last"><p>Specifies the source array with promises to run in parallel.</p></td>
         </tr>
 
     
@@ -335,8 +310,8 @@ This will return a promise to be resolved containing the new array with the mapp
 	<dd class="tag-source">
 		<ul class="dummy">
 			<li>
-				<a href="map.js.html">map.js</a>,
-				 <a href="map.js.html#sunlight-1-line-8">line 8</a>
+				<a href="parallel.js.html">parallel.js</a>,
+				 <a href="parallel.js.html#sunlight-1-line-8">line 8</a>
 			</li>
 		</ul>
 	</dd>
@@ -365,7 +340,7 @@ This will return a promise to be resolved containing the new array with the mapp
     
             
 <div class="param-desc">
-    <p>Returns a promise to be resolved containing the new array with the mapped/transformed items.</p>
+    <p>Returns a promise to be resolved containing the same structure as the source array but with the resolved values.</p>
 </div>
 
 

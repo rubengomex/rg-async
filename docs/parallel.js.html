@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>rg-async Class: Map</title>
+	<title>rg-async Source: parallel.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -67,337 +67,40 @@
 <div class="row">
 
 	
-	<div class="col-md-8">
+	<div class="col-md-12">
 	
 		<div id="main">
 			
 
-	<h1 class="page-title">Class: Map</h1>
+		<h1 class="page-title">Source: parallel.js</h1>
+    
 <section>
-
-<header>
-    
-        <h2>
-            <span class="ancestors"><a href="module-rg-async.html">rg-async</a>.</span>
-        
-        Map
-        </h2>
-        
-            <div class="class-description"><p>Defines a Map class. Provides two methods (map that will run in parallel and mapSeries that will run in series).</p></div>
-        
-    
-</header>
-
-
-<article>
-    <div class="container-overview">
-    
-        
-<hr>
-<dt>
-    <h4 class="name" id="Map"><span class="type-signature"></span>new Map()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-	<dt class="tag-author method-doc-label method-doc-details-label">Author:</dt>
-	<dd class="tag-author">
-		<ul>
-			<li><a href="mailto:gomesruben21@gmail.com">Rúben Gomes</a></li>
-			</ul>
-	</dd>
-	
-
-	
-
-	
-
-	
-
-
-
-	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="map.js.html">map.js</a>,
-				 <a href="map.js.html#sunlight-1-line-6">line 6</a>
-			</li>
-		</ul>
-	</dd>
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        <dl>
-            
-<hr>
-<dt>
-    <h4 class="name" id=".map"><span class="type-signature">&lt;static> </span>map(srcArray, mapper)</h4>
-    
-    
-    <p class="summary">Invokes in parallel an async mapper function on each item in the given source Array.</p>
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Invokes in parallel an async mapper function on each item in the given source Array.
-This will return a promise to be resolved containing the new array with the mapped/transformed items.</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>srcArray</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Specifies the source array to map over.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>mapper</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Specifies the async function that will be called with (value, index, array) as arguments and returns the new mapped value.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="map.js.html">map.js</a>,
-				 <a href="map.js.html#sunlight-1-line-8">line 8</a>
-			</li>
-		</ul>
-	</dd>
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    <p>Returns a promise to be resolved containing the new array with the mapped/transformed items.</p>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise</span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-</dd>
-
-        </dl>
-    
-
-    
-
-    
-</article>
-
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">/**
+ * @memberOf module:rg-async
+ * @author Rúben Gomes &lt;gomesruben21@gmail.com>
+ * @classdesc Defines a Parallel class. Provides a parallel method that will run in parallel).
+ */
+class Parallel {
+
+    /**
+     * Invokes in parallel each item in the given source Array.
+     * @method module:rg-async.Parallel.parallel
+     * @static
+     *
+     * @param  {Array} srcArray     Specifies the source array with promises to run in parallel.
+     * @return {Promise}            Returns a promise to be resolved containing the same structure as the source array but with the resolved values.
+     */
+    static parallel(srcArray) {
+        return Promise.all(srcArray.map(value => value()));
+    }
+}
+
+module.exports = Parallel;</pre>
+    </article>
 </section>
+
 
 
 
@@ -407,10 +110,6 @@ This will return a promise to be resolved containing the new array with the mapp
 
 	<div class="clearfix"></div>
 
-	
-		<div class="col-md-3">
-			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
-		</div>
 	
 
 </div>

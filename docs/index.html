@@ -40,7 +40,7 @@
 			<li class="dropdown">
 				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="module-rg-async.Each.html">rg-async.Each</a></li><li><a href="module-rg-async.Filter.html">rg-async.Filter</a></li><li><a href="module-rg-async.Map.html">rg-async.Map</a></li><li><a href="module-rg-async.Reduce.html">rg-async.Reduce</a></li><li><a href="module-rg-async.Series.html">rg-async.Series</a></li>
+					<li><a href="module-rg-async.Each.html">rg-async.Each</a></li><li><a href="module-rg-async.Filter.html">rg-async.Filter</a></li><li><a href="module-rg-async.Map.html">rg-async.Map</a></li><li><a href="module-rg-async.Parallel.html">rg-async.Parallel</a></li><li><a href="module-rg-async.Reduce.html">rg-async.Reduce</a></li><li><a href="module-rg-async.Series.html">rg-async.Series</a></li>
 				</ul>
 			</li>
 			
@@ -146,6 +146,7 @@ printRgAsyncPlusArrayNumbers(array)
 <li><a href="#each">Each</a></li>
 <li><a href="#reduce">Reduce</a></li>
 <li><a href="#series">Series</a></li>
+<li><a href="#parallel">Parallel</a></li>
 </ul>
 <h4>Filter</h4><ul>
 <li><p><code>filter(srcArray, predicate)</code> method invokes in parallel an async <code>predicate</code> function on each item in the given source Array.</p>
@@ -290,6 +291,33 @@ try{
 // if you aren't inside of async function scope you should use .then method
 rgAsync.series(list)
     .then(resultArray => console.log(resultArray)); // output => [1,2,3,4]
+    .catch(err => console.log(err)); // if exists a case that you throw an error on your list of promises</code></pre><h4>Parallel</h4><ul>
+<li><p><code>parallel(srcArray)</code> method invokes in parallel each item in the given source Array.</p>
+</li>
+<li><p>This will return a <code>promise</code> to be resolved containing the same structure as the <code>srcArray</code>, but with the resolved values</p>
+</li>
+<li><p>Example</p>
+</li>
+</ul>
+<pre class="prettyprint source lang-js"><code>const rgAsync = require('rg-async');
+const list = [
+    async () => await someAsyncCode1(), // let assume that this will return a promise with resolved value of 'one'
+    async () => await someAsyncCode2(), // returns 'two' as a resolved value
+    async () => await someAsyncCode3(), // returns 'three' as a resolved value
+    () => Promise.resolve('four') // returns 'four' as a resolved value
+];
+// if you are inside of a async function scope
+// if exist a case that you throw an error you should wrap this with try-catch clause
+try{
+    const result = await rgAsync.parallel(list);
+    console.log(result); // output => ['one','two','three','four']
+}catch(err){
+    console.log(err);
+}
+
+// if you aren't inside of async function scope you should use .then method
+rgAsync.parallel(list)
+    .then(resultArray => console.log(resultArray)); // output => ['one','two','three','four']
     .catch(err => console.log(err)); // if exists a case that you throw an error on your list of promises</code></pre></article>
     </section>
 

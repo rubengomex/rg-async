@@ -88,6 +88,7 @@ printRgAsyncPlusArrayNumbers(array)
 * [Each](#each)
 * [Reduce](#reduce)
 * [Series](#series)
+* [Parallel](#parallel)
 
 #### Filter
 
@@ -260,6 +261,34 @@ rgAsync.series(list)
     .catch(err => console.log(err)); // if exists a case that you throw an error on your list of promises
 ```
 
+#### Parallel
 
+* `parallel(srcArray)` method invokes in parallel each item in the given source Array.
 
+* This will return a `promise` to be resolved containing the same structure as the `srcArray`, but with the resolved values
+
+* Example
+
+```js
+const rgAsync = require('rg-async');
+const list = [
+    async () => await someAsyncCode1(), // let assume that this will return a promise with resolved value of 'one'
+    async () => await someAsyncCode2(), // returns 'two' as a resolved value
+    async () => await someAsyncCode3(), // returns 'three' as a resolved value
+    () => Promise.resolve('four') // returns 'four' as a resolved value
+];
+// if you are inside of a async function scope
+// if exist a case that you throw an error you should wrap this with try-catch clause
+try{
+    const result = await rgAsync.parallel(list);
+    console.log(result); // output => ['one','two','three','four']
+}catch(err){
+    console.log(err);
+}
+
+// if you aren't inside of async function scope you should use .then method
+rgAsync.parallel(list)
+    .then(resultArray => console.log(resultArray)); // output => ['one','two','three','four']
+    .catch(err => console.log(err)); // if exists a case that you throw an error on your list of promises
+```
 
