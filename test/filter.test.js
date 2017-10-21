@@ -5,6 +5,11 @@ const rgAsync = require('../src');
 chai.use(require('chai-as-promised'));
 
 describe('filter tests', () => {
+
+    it('it should return a resolved empty array if the srcArray is null or undefined', () => {
+        expect(rgAsync.filter(null)).to.eventually.be.an('array').empty;
+    });
+
     it('it should get and empty array', () => {
         expect(rgAsync.filter([], () => Promise.resolve())).to.eventually.be.an('array').empty;
     });

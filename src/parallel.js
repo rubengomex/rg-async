@@ -14,7 +14,7 @@ class Parallel {
      * @return {Promise}            Returns a promise to be resolved containing the same structure as the source array but with the resolved values.
      */
     static parallel(srcArray) {
-        return Promise.all(srcArray.map(value => value()));
+        return Promise.all((srcArray || []).map(value => value()));
     }
 }
 

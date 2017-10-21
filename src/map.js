@@ -16,7 +16,9 @@ class Map {
      * @return {Promise}            Returns a promise to be resolved containing the new array with the mapped/transformed items.
      */
     static map(srcArray, mapper) {
-        return Promise.all(srcArray.map(mapper));
+        srcArray = srcArray || [];
+        mapper = mapper || (() => {});
+        return Promise.all((srcArray).map(mapper));
     }
 }
 

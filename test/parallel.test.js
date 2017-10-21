@@ -6,6 +6,10 @@ chai.use(require('chai-as-promised'));
 
 describe('parallel tests', () => {
 
+    it('it should return a resolved empty array if the srcArray is null or undefined', () => {
+        expect(rgAsync.parallel(null)).to.eventually.be.an('array').empty;
+    });
+
     it('it should get and empty array', () => {
         expect(rgAsync.parallel([])).to.eventually.be.an('array').empty;
     });

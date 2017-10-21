@@ -1,3 +1,5 @@
+const _ = require('lodash');
+
 /**
  * @memberOf module:rg-async
  * @author Rúben Gomes <gomesruben21@gmail.com>
@@ -17,6 +19,10 @@ class Reduce {
      * @return {Promise}            Returns a promise to be resolved containing final accumulator value.
      */
     static reduce(srcArray, reducer, accumulator) {
+        srcArray = srcArray || [];
+        reducer = reducer || (() => Promise.resolve([]));
+        accumulator = _.isNil(accumulator) ? [] : accumulator;
+
         return Promise.resolve(accumulator)
             .then(curr => (
                 srcArray.reduce((promise, currValue, index) => (

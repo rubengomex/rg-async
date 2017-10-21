@@ -16,7 +16,10 @@ class Each {
      * @return {Promise}            Returns a promise to be resolved without any value to be resolved.
      */
     static async each(srcArray, consumer) {
-        await Promise.all(srcArray.map(consumer));
+        srcArray = srcArray || [];
+        consumer = consumer || (() => {});
+
+        await Promise.all((srcArray).map(consumer));
     }
 }
 

@@ -6,6 +6,10 @@ chai.use(require('chai-as-promised'));
 
 describe('series tests', () => {
 
+    it('it should return a resolved empty array value if the srcArray is null or undefined', () => {
+        expect(rgAsync.series(null)).to.eventually.be.an('array').empty;
+    });
+
     it('it should get and empty array', () => {
         expect(rgAsync.series([])).to.eventually.be.an('array').empty;
     });

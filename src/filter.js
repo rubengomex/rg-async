@@ -21,7 +21,7 @@ class Filter {
      */
     static async filter(srcArray, predicate) {
         const mappedArray = await map(srcArray, predicate);
-        return srcArray.filter((value, index) => !!mappedArray[index]);
+        return (srcArray ||  []).filter((value, index) => !!mappedArray[index]);
     }
 }
 
