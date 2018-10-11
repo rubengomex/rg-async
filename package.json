@@ -48,11 +48,11 @@
     "chai": "3.5.0",
     "chai-as-promised": "7.1.1",
     "codecov.io": "0.1.6",
-    "commitizen": "2.9.6",
+    "commitizen": "^3.0.2",
     "cz-conventional-changelog": "2.0.0",
     "eslint": "3.17.1",
     "ghooks": "2.0.0",
-    "gulp": "3.9.1",
+    "gulp": "^4.0.0",
     "gulp-beautify": "2.0.1",
     "gulp-eslint": "3.0.1",
     "gulp-jsdoc3": "1.0.1",
@@ -62,7 +62,7 @@
     "istanbul": "1.1.0-alpha.1",
     "mocha": "^5.2.0",
     "run-sequence": "1.2.2",
-    "semantic-release": "^6.3.6"
+    "semantic-release": "^15.10.2"
   },
   "dependencies": {
     "lodash": "4.17.10"
