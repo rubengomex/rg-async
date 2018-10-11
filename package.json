@@ -65,7 +65,7 @@
     "semantic-release": "^6.3.6"
   },
   "dependencies": {
-    "lodash": "4.17.4"
+    "lodash": "4.17.10"
   },
   "czConfig": {
     "path": "node_modules/cz-conventional-changelog"
