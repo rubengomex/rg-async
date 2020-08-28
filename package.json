@@ -67,7 +67,7 @@
     "travis-deploy-once": "^5.0.9"
   },
   "dependencies": {
-    "lodash": "4.17.10"
+    "lodash": "4.17.17"
   },
   "czConfig": {
     "path": "node_modules/cz-conventional-changelog"
